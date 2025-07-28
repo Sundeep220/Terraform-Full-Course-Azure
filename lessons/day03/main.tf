@@ -15,20 +15,19 @@ provider "azurerm" {
   
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
+resource "azurerm_resource_group" "rg" {
+  name     = "sampletest-rg"
   location = "West Europe"
 }
 
 resource "azurerm_storage_account" "example" {
- 
-  name                     = "techtutorial101"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location # implicit dependency
+  name                     = "storageaccount2205"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location # implicit dependency
   account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_replication_type = "GRS"
 
   tags = {
-    environment = "staging"
+    environment = "test"
   }
 }

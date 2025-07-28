@@ -2,7 +2,7 @@
 
 RESOURCE_GROUP_NAME=tfstate-day04
 STORAGE_ACCOUNT_NAME=day04$RANDOM
-CONTAINER_NAME=tfstate
+CONTAINER_NAME=tfstate    #Folder name in the storage account
 
 # Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location eastus

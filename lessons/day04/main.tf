@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "tfstate-day04"  # Can be passed via `-backend-config=`"resource_group_name=<resource group name>"` in the `init` command.
-    storage_account_name = "day0417691"                      # Can be passed via `-backend-config=`"storage_account_name=<storage account name>"` in the `init` command.
-    container_name       = "tfstate"                       # Can be passed via `-backend-config=`"container_name=<container name>"` in the `init` command.
-    key                  = "dev.terraform.tfstate"        # Can be passed via `-backend-config=`"key=<blob key name>"` in the `init` command.
+    # Export your ARM_ACCESS_KEY before running this tf file.
+    storage_account_name = "day048537"                                 # Can be passed via `-backend-config=`"storage_account_name=<storage account name>"` in the `init` command.
+    container_name       = "tfstate"                                  # Can be passed via `-backend-config=`"container_name=<container name>"` in the `init` command.
+    key                  = "dev.terraform.tfstate"                   # Can be passed via `-backend-config=`"key=<blob key name>"` in the `init` command.
   }
   required_version = ">=1.9.0"
 }
@@ -21,20 +21,21 @@ provider "azurerm" {
   
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
+
+
+resource "azurerm_resource_group" "rg" {
+  name     = "sampletest-rg"
   location = "West Europe"
 }
 
 resource "azurerm_storage_account" "example" {
- 
-  name                     = "techtutorial101"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location # implicit dependency
+  name                     = "storageaccount2205"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location # implicit dependency
   account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_replication_type = "GRS"
 
   tags = {
-    environment = "staging"
+    environment = "test"
   }
 }

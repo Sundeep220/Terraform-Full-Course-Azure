@@ -23,6 +23,10 @@ terraform.rc
 # Ignore Terraform plan files
 *.tfplan
 
+#Ignore .env files
+lessons/day*/.env
+
+
 # Ignore logs from Terraform commands
 *.log
 
