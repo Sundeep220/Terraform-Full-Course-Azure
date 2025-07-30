@@ -70,7 +70,5 @@ variable "vm_config" {
 
 variable "storage_account_name" {
   type = set(string)
-  default = [ "techtutorials11", "techtutorials12" ]
-
-  
+  default = [ "sundeep11", "sundeep12" ]
 }

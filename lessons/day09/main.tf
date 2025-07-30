@@ -7,6 +7,7 @@ resource "azurerm_resource_group" "example" {
     environment = var.environment
   }
 
+  # Create new resource group before destroying the old one, ignore changes to tags, and prevent the resource group from being deleted
   lifecycle {
     create_before_destroy = true
     prevent_destroy = false
@@ -15,7 +16,7 @@ resource "azurerm_resource_group" "example" {
       condition = contains(var.allowed_locations, var.location)
       error_message = "Please enter a valid location!"
     }
-    
+
   }
 
 }
