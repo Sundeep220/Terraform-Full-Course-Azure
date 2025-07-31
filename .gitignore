@@ -25,6 +25,7 @@ terraform.rc
 
 #Ignore .env files
 lessons/day*/.env
+.env
 
 
 # Ignore logs from Terraform commands
